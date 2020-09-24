@@ -19,15 +19,28 @@ steps:
   - cd test-ci
   - npm run build
 
-- name: deploy  
-  image: plugins/gh-pages
+- name: notify  
+  image: plugins/slack
   settings:
-    username: amco3008
-    password: a8c8de86093840c346fbf00f4af7aaa1b55219ae
-    pages_directory: test-ci/dist/
+    webhook: https://hooks.slack.com/services/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
+    channel: drone-ci
+    template: >
+      {{#success build.status}}
+        Matthew build {{build.number}} succeeded. Good job.
+      {{else}}
+        Matthew build {{build.number}} failed. Fix me please.
+      {{/success}}
 
-# - name: deploy
-#   image: lowess/preact-cli
-#   commands:
-#   - cd /drone/src/test-ci
-#   - npm run build
+# - name: delivery  
+#   image: plugins/gh-pages
+#   settings:
+#     username: amco3008
+#     password: a8c8de86093840c346fbf00f4af7aaa1b55219ae
+#     pages_directory: test-ci/dist/
+
+# - name: deploy  
+#   image: plugins/gh-pages
+#   settings:
+#     username: amco3008
+#     password: a8c8de86093840c346fbf00f4af7aaa1b55219ae
+#     pages_directory: test-ci/dist/
