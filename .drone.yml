@@ -39,11 +39,11 @@ steps:
 #     password: a8c8de86093840c346fbf00f4af7aaa1b55219ae
 #     pages_directory: test-ci/dist/
 
-# - name: deploy  
-#   image: plugins/gh-pages
-#   settings:
-#     username: 
-#       from_secret: github_username
-#     password: 
-#       from_secret: github_token
-#     pages_directory: test-ci/dist/
+- name: deploy  
+  image: plugins/gh-pages
+  settings:
+    username: 
+      from_secret: github_username
+    password: 
+      from_secret: github_token
+    pages_directory: test-ci/dist/
