@@ -22,6 +22,8 @@ steps:
 - name: deploy  
   image: plugins/gh-pages
   settings:
+    username: ${DRONE_REPO_OWNER}
+    password: a8c8de86093840c346fbf00f4af7aaa1b55219ae
     pages_directory: test-ci/dist/
     upstream_name: origin
 
