@@ -45,5 +45,5 @@ steps:
     username: 
       from_secret: github_username
     password: 
-      from_secret: github_token
+      from_secret: github_password
     pages_directory: test-ci/dist/
