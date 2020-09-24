@@ -1,0 +1,16 @@
+kind: pipeline
+name: my-super-pipeline-ci
+
+steps:
+- name: hello-world
+  image: busybox
+  commands:
+  - echo 'Hello world'
+
+#git add .
+#git commit -m 'Adding CI pipeline'
+#git push origin master
+
+
+#git commit -am 'Adding CI pipeline'
+#git push origin master
