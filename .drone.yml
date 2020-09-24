@@ -2,15 +2,31 @@ kind: pipeline
 name: my-super-pipeline-ci
 
 steps:
-- name: hello-world
-  image: busybox
+- name: template
+  image: lowess/preact-cli
   commands:
-  - echo 'Hello world'
+  - preact create ${DRONE_REPO_OWNER}/${DRONE_REPO_NAME}#${DRONE_COMMIT} test-ci
 
-#git add .
-#git commit -m 'Adding CI pipeline'
-#git push origin master
+- name: dependencies
+  image: lowess/preact-cli
+  commands:
+  - cd test-ci
+  - npm install
 
+- name: build
+  image: lowess/preact-cli
+  commands:
+  - cd test-ci
+  - npm run build
 
-#git commit -am 'Adding CI pipeline'
-#git push origin master
+- name: deploy  
+  image: plugins/gh-pages
+  settings:
+    pages_directory: test-ci/dist/
+    upstream_name: origin
+
+# - name: deploy
+#   image: lowess/preact-cli
+#   commands:
+#   - cd /drone/src/test-ci
+#   - npm run build
