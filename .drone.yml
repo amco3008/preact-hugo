@@ -17,7 +17,7 @@ steps:
   image: lowess/preact-cli
   commands:
   - cd test-ci
-  - npm run build:webpack && npm run build:hugo -b http://amco3008.github.io/preact-hugo
+  - npm run build:webpack && hugo -b http://amco3008.github.io/preact-hugo -d ../dist -s site -v
 
 - name: notify  
   image: plugins/slack
