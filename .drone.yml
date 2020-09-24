@@ -25,7 +25,6 @@ steps:
     webhook: 
       from_secret: slack_webhook
     channel: drone-ci
-    icon_url: https://unsplash.it/256/256/?random
     template: >
       {{#success build.status}}
         Matthew build {{build.number}} succeeded. Good job.
@@ -43,6 +42,8 @@ steps:
 # - name: deploy  
 #   image: plugins/gh-pages
 #   settings:
-#     username: amco3008
-#     password: a8c8de86093840c346fbf00f4af7aaa1b55219ae
+#     username: 
+#       from_secret: github_username
+#     password: 
+#       from_secret: github_token
 #     pages_directory: test-ci/dist/
