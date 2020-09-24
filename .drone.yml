@@ -22,8 +22,10 @@ steps:
 - name: notify  
   image: plugins/slack
   settings:
-    webhook: https://hooks.slack.com/services/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
+    webhook: 
+      from_secret: SLACK_WEBHOOK
     channel: drone-ci
+    icon_url: https://unsplash.it/256/256/?random
     template: >
       {{#success build.status}}
         Matthew build {{build.number}} succeeded. Good job.
